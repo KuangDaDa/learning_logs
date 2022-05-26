@@ -1,0 +1,16 @@
+{% extends './base.html' %}
+{% load bootstrap4 %}
+
+{% block header %}
+<h2>Topics - All you noted</h2>
+{% endblock %}
+{% block content %}
+<ul class="list-unstyled">
+    {% for topic in topics %}
+    <li class="h6"><a href="{% url 'topic' topic.id %}"> {{ topic.text }} </a></li>
+    {% empty %}
+    <li class="h6">No topics have been yet.</li>
+    {% endfor %}
+</ul>
+<h6>Operation - <a href="{% url 'new_topic' %}"> add Topic</a></h6>
+{% endblock %}

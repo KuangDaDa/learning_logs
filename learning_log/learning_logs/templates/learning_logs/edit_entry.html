@@ -1,0 +1,18 @@
+{% extends './base.html' %}
+{% load bootstrap4 %}
+
+{% block header %}
+<h4>Topic - <a href="{% url 'topic' topic.id %}">{{ topic.text }}</a></h4>
+<hr>
+
+{% endblock %}
+
+{% block content %}
+<h5>Operation - edit Entry</h5>
+
+<form action="{% url 'edit_entry' topic.id %}" method="POST">
+{% csrf_token %}
+{% bootstrap_form form %}
+<input type="submit" value="Save change" class="btn btn-primary">
+</form>
+{% endblock %}

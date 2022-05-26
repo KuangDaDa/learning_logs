@@ -1,0 +1,24 @@
+{% extends './base.html' %}
+{% load bootstrap4 %}
+
+{% block header %}
+<h2>Topic - {{ topic.text }}</h2>
+{% endblock %}
+
+{% block content %}
+
+<h4>Entries - list</h4>
+<hr>
+    <a class="d-block h5 mb-3" href="{% url 'new_entry' topic.id %}">Add new entry</a>
+    {% for entry in entries %}
+    <div class="card mb-4">
+      <div class="card-header">
+        <h4>{{ entry.created|date:'M d, Y H:i' }} <span><a class="h6" href="{% url 'edit_entry' entry.id %}">Edit entry</a></span></h4>
+      </div>
+      <div class="card-body">
+          <div class="card-text">{{ entry.text|linebreaks }}</div>
+      </div>
+    </div>
+    {% endfor %}
+
+{% endblock %}
